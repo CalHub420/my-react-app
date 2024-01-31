@@ -10,7 +10,7 @@ const Pages = () => {
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/todolist" element={<ToDoList />} />
+            <Route path="/todolist" element={<ToDoList />} /> 
         </Routes>
         </BrowserRouter>
     );

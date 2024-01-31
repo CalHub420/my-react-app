@@ -1,0 +1,109 @@
+/* SubmissionForm.css */
+
+/* Import NavigationBar styles */
+@import "./NavigationBar.css";
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #d8370d;
+    /* Set the background color of the entire page */
+    display: flex;
+}
+
+body {
+    align-items: center;
+    /* Center the content vertically */
+}
+
+nav {
+    width: 150px;
+    /* Adjust the width as needed */
+    background-color: #333;
+    height: 100vh;
+    /* Take up the full height of the viewport */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+.submission-form-page {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #d8370d;
+}
+
+.logo-image {
+    width: 200px;
+    /* Set a fixed width for the logo */
+    max-width: 100%;
+    margin-top: 5%;
+    /* Adjust the margin-top as needed */
+}
+
+.submission-form {
+    max-width: 600px;
+    width: 90%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.submission-form textarea {
+    height: 200px;
+    width: 100%;
+    /* Set the height for the textarea */
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.anonymous-checkbox {
+    margin-top: 5%;
+    /* Adjust the margin-top as needed */
+}
+
+.submission-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.submission-button:hover {
+    background-color: #45a049;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .submission-form {
+        width: 100%;
+    }
+}

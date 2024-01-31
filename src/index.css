@@ -1,3 +1,52 @@
+/* Existing styles in index.css */
+
+.title-container {
+  height: 190;
+  background-color: #d9534f;
+  padding: 20px;
+  border-radius: 8px;
+  color: black;
+  text-align: center;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.output-box {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-image {
+  /* SUMMIT LOGO */
+  width: 350px;
+  height: auto;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  right: 100px;
+}
+
+.logo-image-Summit2 {
+  /* SPARE */
+  width: auto;
+  height: auto;
+  border-radius: 150px;
+  position: absolute;
+  bottom: 1px;
+  left: 200px;
+}
+
+/* New styles to integrate */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

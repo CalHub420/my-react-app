@@ -1,13 +1,15 @@
 /* Existing styles in index.css */
 
 .title-container {
-  height: 190;
+  height: 190px;
   background-color: #d9534f;
+  /*NOT BEING APPLIED - TOP BUG FIX! */
   padding: 20px;
   border-radius: 8px;
   color: black;
   text-align: center;
 }
+
 
 form {
   margin-bottom: 20px;

@@ -17,11 +17,13 @@ const configuration = {
 
 const pca = new PublicClientApplication(configuration);
 
-//<MsalProvider instance={pca}>
 
 root.render(
   <React.StrictMode>
+    
+<MsalProvider instance={pca}> 
     <App />
+    </MsalProvider>
   </React.StrictMode>
 );
 

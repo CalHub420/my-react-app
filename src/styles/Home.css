@@ -1,19 +1,22 @@
-/* HomePage.css 
+/* HomePage.css */
 
-*/
-
+/* Example content in Home.css */
+.App {
+    text-align: center;
+    background-color: black;
+}
 
 .home {
-    height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 1000px;
+    color: white;
+    background-color: #D8370B;
     /* Add vertical scroll */
     /* Set width to 100% */
-    color: white;
 }
-
 
 .logo-image {
     width: 465px;
@@ -31,6 +34,7 @@
     font-size: 28px;
     font-family: 'Helvetica', sans-serif;
     margin-bottom: 10px;
+    color: black;
 }
 
 .slogan-header {

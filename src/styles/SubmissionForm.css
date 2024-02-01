@@ -1,28 +1,21 @@
-/* SubmissionForm.css */
-
-/* Import NavigationBar styles */
 @import "./NavigationBar.css";
 
 body,
 html {
+    display: flex;
     margin: 0;
     padding: 0;
     background-color: #d8370d;
-    /* Set the background color of the entire page */
-    display: flex;
 }
 
 body {
     align-items: center;
-    /* Center the content vertically */
 }
 
 nav {
-    width: 150px;
-    /* Adjust the width as needed */
     background-color: #333;
     height: 100vh;
-    /* Take up the full height of the viewport */
+    width: 150px;
 }
 
 ul {
@@ -44,43 +37,39 @@ a:hover {
 }
 
 .submission-form-page {
-    height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 10vh;
     background-color: #d8370d;
 }
 
 .logo-image {
-    width: 200px;
-    /* Set a fixed width for the logo */
     max-width: 100%;
+    width: 200px;
     margin-top: 5%;
-    /* Adjust the margin-top as needed */
 }
 
 .submission-form {
-    max-width: 600px;
     width: 90%;
+    max-width: 600px;
     margin: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffa500;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .submission-form textarea {
-    height: 200px;
     width: 100%;
-    /* Set the height for the textarea */
+    height: 200px;
     padding: 8px;
     box-sizing: border-box;
 }
 
 .anonymous-checkbox {
     margin-top: 5%;
-    /* Adjust the margin-top as needed */
 }
 
 .submission-button {
@@ -101,7 +90,6 @@ a:hover {
     background-color: #45a049;
 }
 
-/* Media Query for smaller screens */
 @media (max-width: 768px) {
     .submission-form {
         width: 100%;

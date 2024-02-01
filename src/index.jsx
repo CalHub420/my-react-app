@@ -11,18 +11,17 @@ const root = createRoot(document.getElementById('root'));
 
 const configuration = {
   auth: {
-      clientId: "0239b525-8be1-49eb-9ed0-e320acbbfd10"
+      clientId: "0239b525-8be1-49eb-9ed0-e320acbbfd10",
+      authority: 'https://login.microsoftonline.com/8634d27a-013f-4953-b957-60fdb603213d'
   }
 };
 
 const pca = new PublicClientApplication(configuration);
 
-
 root.render(
   <React.StrictMode>
-    
-<MsalProvider instance={pca}> 
-    <App />
+    <MsalProvider instance={pca}>
+      <App />
     </MsalProvider>
   </React.StrictMode>
 );

@@ -40,8 +40,9 @@ export const b2cPolicies = {
  */
 export const msalConfig = {
   auth: {
-    clientId: "09dd92cf-78ba-4c25-94b2-ec3f3ef84352", // This is the ONLY mandatory field that you need to supply.
-    authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
+    clientId: "0239b525-8be1-49eb-9ed0-e320acbbfd10",
+    authority:
+      "https://login.microsoftonline.com/8634d27a-013f-4953-b957-60fdb603213d",
     knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
     redirectUri: "/", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
     postLogoutRedirectUri: "/", // Indicates the page to navigate after logout.
@@ -82,17 +83,17 @@ export const msalConfig = {
  * Add here the endpoints and scopes when obtaining an access token for protected web APIs. For more information, see:
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
  */
-export const protectedResources = {
-  apiTodoList: {
-    endpoint: "http://localhost:5000/api/todolist",
-    scopes: {
-      read: ["https://fabrikamb2c.onmicrosoft.com/TodoList/ToDoList.Read"],
-      write: [
-        "https://fabrikamb2c.onmicrosoft.com/TodoList/ToDoList.ReadWrite",
-      ],
-    },
-  },
-};
+// export const protectedResources = {
+//   apiTodoList: {
+//     endpoint: "http://localhost:5000/api/todolist",
+//     scopes: {
+//       read: ["https://fabrikamb2c.onmicrosoft.com/TodoList/ToDoList.Read"],
+//       write: [
+//         "https://fabrikamb2c.onmicrosoft.com/TodoList/ToDoList.ReadWrite",
+//       ],
+//     },
+//   },
+// };
 
 /**
  * Scopes you add here will be prompted for user consent during sign-in.
@@ -101,8 +102,5 @@ export const protectedResources = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {
-  scopes: [
-    ...protectedResources.apiTodoList.scopes.read,
-    ...protectedResources.apiTodoList.scopes.write,
-  ],
+  scopes: [],
 };

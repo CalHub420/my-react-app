@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "src/styles/Home.css"; // Import your custom styling
+import "src/styles/Admin.css"; // Import your custom styling
 
-function Home() {
+function Admin() {
   return (
-    <div className="home">
+    <div className="admin">
       <div className="header">
         <div className="logo-container">
           {/* Use the logo from the public folder */}
@@ -12,7 +12,7 @@ function Home() {
         </div>
       </div>
       <div className="content-container">
-        <h2 className="banner-header">Welcome to the Summit Support Hub</h2>
+        <h2 className="banner-header">This is the admin page</h2>
         <p className="slogan-header">
           Passion, Honesty, Teamwork, Kindness, Learning
         </p>
@@ -24,4 +24,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Admin;

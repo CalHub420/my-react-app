@@ -10,6 +10,10 @@ import {
 import { InteractionStatus } from "@azure/msal-browser";
 import { loginRequest, b2cPolicies } from "../authConfig";
 import "src/styles/NavigationBar.css"; // Import the CSS file
+import { Home } from "./Hello";
+import SubmissionForm from "./SubmissionForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faClipboardList, faWrench } from "@fortawesome/free-solid-svg-icons";
 
 function NavigationBar() {
   const { instance, inProgress } = useMsal(); // re-isntalled @azure/msal-react and it got rid of the useMsal hook issue - Doesnt seem to have fixed anything! :)
@@ -78,12 +82,29 @@ function NavigationBar() {
     }
   };
 
+ 
   return (
     <>
       <Navbar bg="primary" variant="dark" className="navbarStyle">
         <a className="navbar-brand" href="/">
           Microsoft identity platform
         </a>
+
+        <Nav className="flex-column">
+          <Navbar.Brand as={Link} to="/home">
+          <FontAwesomeIcon icon={faHome} style={{ fontSize: '2em', marginBottom: '25px', marginTop: '25px', marginRight: '20px' }} />
+          </Navbar.Brand>
+
+        
+          <Navbar.Brand as={Link} to="/submission-form">
+          <FontAwesomeIcon icon={faClipboardList} style={{ fontSize: '2em', marginBottom: '25px', marginRight: '20px' }} />
+          </Navbar.Brand>
+
+          <Navbar.Brand as={Link} to="/admin-view">
+            <FontAwesomeIcon icon={faWrench} style={{ fontSize: '2em', marginBottom: '25px', marginRight: '10px' }} />
+          </Navbar.Brand>
+        </Nav>
+
         <AuthenticatedTemplate>
           <Nav.Link className="navbarButton" href="/todolist">
             Todolist

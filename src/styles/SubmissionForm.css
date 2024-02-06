@@ -1,39 +1,21 @@
-@import "./NavigationBar.css";
-
+/* SubmissionForm.css */
 body,
 html {
     display: flex;
     margin: 0;
     padding: 0;
     background-color: #d8370d;
+    height: 100vh;
 }
 
 body {
     align-items: center;
 }
 
-nav {
-    background-color: #333;
-    height: 100vh;
-    width: 150px;
-}
+.content-container {
+    width: 1200px;
+    margin: auto;
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 10px;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    background-color: #555;
 }
 
 .submission-form-page {
@@ -41,13 +23,16 @@ a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 10vh;
+    height: 100vh;
+    width: 100vw;
+    /* Adjust the percentage as needed */
     background-color: #d8370d;
+    text-align: center;
 }
 
 .logo-image {
     max-width: 100%;
-    width: 200px;
+    width: 320px;
     margin-top: 5%;
 }
 
@@ -56,7 +41,7 @@ a:hover {
     max-width: 600px;
     margin: 20px;
     padding: 20px;
-    background-color: #ffa500;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

@@ -50,7 +50,7 @@ function SubmissionForm() {
 
   return (
     <div className="submission-form-page">
-      <Logo />
+     
       <div classname ="content-container">
       <h1>Form Submission</h1>
 

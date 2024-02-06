@@ -5,7 +5,7 @@ function Logo() {
   return (
     <div className="logo-container">
       <img
-        src={process.env.PUBLIC_URL + "/logo0.png"} // Replace with the actual path to your logo image
+        src={process.env.PUBLIC_URL + "/logo0.png"}
         alt="Logo"
         className="logo-image"
       />

@@ -30,12 +30,6 @@ body {
     text-align: center;
 }
 
-.logo-image {
-    max-width: 100%;
-    width: 320px;
-    margin-top: 5%;
-}
-
 .submission-form {
     width: 90%;
     max-width: 600px;

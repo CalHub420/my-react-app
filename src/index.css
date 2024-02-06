@@ -27,21 +27,19 @@ form {
   transform: translateX(-50%);
 }
 
-.logo-image {
-  /* SUMMIT LOGO */
-  width: 350px;
-  height: auto;
-  border-radius: 50%;
+.logo-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 30px;
+  /*Height doesnt need changing */
 }
 
-.logo-image-Summit2 {
-  /* SPARE */
-  width: auto;
+.logo-image {
+  /* SUMMIT LOGO */
+  width: 240px;
+  /* Sizing broken?? */
   height: auto;
-  border-radius: 150px;
-  position: absolute;
-  bottom: 1px;
-  left: 200px;
 }
 
 /* New styles to integrate */

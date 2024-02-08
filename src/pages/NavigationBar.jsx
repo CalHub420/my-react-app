@@ -130,51 +130,22 @@ function NavigationBar() {
         </Nav>
 
         <AuthenticatedTemplate>
-          <Nav.Link className="navbarButton" href="/todolist">
-            Todolist
-          </Nav.Link>
+          <p>
+            {activeAccount && activeAccount.username
+              ? activeAccount.name
+              : "Unknown"}
+          </p>
           <div className="collapse navbar-collapse justify-content-end">
-            <Button
-              variant="info"
-              onClick={handleProfileEdit}
-              className="profileButton"
-            >
-              Edit Profile
-            </Button>
-
-            <DropdownButton
-              variant="warning"
-              drop="start"
-              title={
-                activeAccount && activeAccount.username
-                  ? activeAccount.username
-                  : "Unknown"
-              }
-            >
-              <Dropdown.Item as="button" onClick={handleLogoutPopup}>
-                Sign out using Popup
-              </Dropdown.Item>
-              <Dropdown.Item as="button" onClick={handleLogoutRedirect}>
-                Sign out using Redirect
-              </Dropdown.Item>
-            </DropdownButton>
+            <button as="button" onClick={handleLogoutRedirect}>
+              Sign out
+            </button>
           </div>
         </AuthenticatedTemplate>
         <UnauthenticatedTemplate>
           <div className="collapse navbar-collapse justify-content-end">
-            <DropdownButton
-              variant="secondary"
-              className="ml-auto"
-              drop="start"
-              title="Sign In"
-            >
-              <Dropdown.Item as="button" onClick={handleLoginPopup}>
-                Sign in using Popup
-              </Dropdown.Item>
-              <Dropdown.Item as="button" onClick={handleLoginRedirect}>
-                Sign in using Redirect
-              </Dropdown.Item>
-            </DropdownButton>
+            <button as="button" onClick={handleLoginRedirect}>
+              Sign in
+            </button>
           </div>
         </UnauthenticatedTemplate>
       </Navbar>

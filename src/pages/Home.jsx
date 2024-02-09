@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "src/styles/Home.css"; 
+import "src/styles/Home.css";
 import Logo from "src/components/Logo";
 
 function Home() {
   return (
     <div className="home">
       <div className="content-container">
-        <h2 className="banner-header">Welcome to the Summit Support Hub</h2>
+        <h2 className="banner-header1">Welcome to the Summit Support Hub</h2>
         <p className="slogan-header">
           Passion, Honesty, Teamwork, Kindness, Learning
         </p>

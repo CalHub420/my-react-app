@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FormDetails from "../components/FormDetails";
 import "src/styles/Admin.css"; // Import your custom styling
 
 function Admin() {
@@ -50,7 +51,7 @@ function Admin() {
         </div>
       </div>
       <div className="content-container">
-        <h2 className="banner-header">This is the admin page</h2>
+        <h2 className="banner-header">This is the admin page!</h2>
         <p className="slogan-header">
           Passion, Honesty, Teamwork, Kindness, Learning
         </p>

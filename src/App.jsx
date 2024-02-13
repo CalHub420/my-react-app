@@ -6,7 +6,7 @@ import {
 } from "@azure/msal-react";
 import {} from "@azure/msal-react";
 import { AuthProvider } from "./context";
-import { PageLayout } from "./components";
+import { PageLayout, FormDetails } from "./components";
 import { Admin, Home, SubmissionForm, Login } from "./pages";
 
 import "./styles/App.css";
@@ -21,6 +21,7 @@ function App() {
               <Route exact path="/" element={<Home />} />
               <Route path="/submission-form" element={<SubmissionForm />} />
               <Route path="/admin-view" element={<Admin />} />
+              <Route path="/form-details/:index" element={<FormDetails />} />
             </Routes>
           </PageLayout>
         </Router>

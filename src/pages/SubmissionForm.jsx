@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "src/styles/SubmissionForm.css";
 import Logo from "../components/Logo";
-import InputLabel from "../components/InputLabel";
-import TextInput from "../components/TextInput";
-import Checkbox from "../components/Checkbox";
-import SubmitButton from "../components/SubmitButton";
+import InputLabel from "../components/form/InputLabel";
+import TextInput from "../components/form/TextInput";
+import Checkbox from "../components/form/Checkbox";
+import SubmitButton from "../components/form/SubmitButton";
 
 async function submitFormToServer(formData) {
   try {
@@ -50,36 +50,35 @@ function SubmissionForm() {
 
   return (
     <div className="submission-form-page">
-     
-      <div classname ="content-container">
-      <h1>Form Submission</h1>
+      <div classname="content-container">
+        <h1>Form Submission</h1>
 
-      <form onSubmit={handleSubmit} className="submission-form">
-        <InputLabel htmlFor="userInput">User Input:</InputLabel>
-        <TextInput
-          id="userInput"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Enter your input here..."
-          textarea // Indicate that this is a textarea
-        />
-
-        <div className="anonymous-checkbox">
-          <p>Would you like to submit anonymously?</p>
-          <Checkbox
-            id="anonymous"
-            checked={anonymous}
-            onChange={() => setAnonymous(!anonymous)}
-            label="Yes, submit anonymously"
+        <form onSubmit={handleSubmit} className="submission-form">
+          <InputLabel htmlFor="userInput">User Input:</InputLabel>
+          <TextInput
+            id="userInput"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            placeholder="Enter your input here..."
+            textarea // Indicate that this is a textarea
           />
-        </div>
 
-        <SubmitButton type="submit" className="submission-button">
-          Submit
-        </SubmitButton>
+          <div className="anonymous-checkbox">
+            <p>Would you like to submit anonymously?</p>
+            <Checkbox
+              id="anonymous"
+              checked={anonymous}
+              onChange={() => setAnonymous(!anonymous)}
+              label="Yes, submit anonymously"
+            />
+          </div>
 
-        {submissionMessage && <p>{submissionMessage}</p>}
-      </form>
+          <SubmitButton type="submit" className="submission-button">
+            Submit
+          </SubmitButton>
+
+          {submissionMessage && <p>{submissionMessage}</p>}
+        </form>
       </div>
     </div>
   );

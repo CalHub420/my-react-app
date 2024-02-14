@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import "src/styles/SubmissionForm.css";
 import Logo from "../components/Logo";
-import InputLabel from "../components/form/InputLabel";
-import TextInput from "../components/form/TextInput";
-import Checkbox from "../components/form/Checkbox";
-import SubmitButton from "../components/form/SubmitButton";
+import { Form, Container, Row, Col, Button } from "react-bootstrap";
 
 async function submitFormToServer(formData) {
   try {
@@ -50,36 +47,37 @@ function SubmissionForm() {
 
   return (
     <div className="submission-form-page">
-      <div classname="content-container">
+      <Container>
         <h1>Form Submission</h1>
 
-        <form onSubmit={handleSubmit} className="submission-form">
-          <InputLabel htmlFor="userInput">User Input:</InputLabel>
-          <TextInput
-            id="userInput"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Enter your input here..."
-            textarea // Indicate that this is a textarea
-          />
+        <Form onSubmit={handleSubmit} className="submission-form">
+          <Form.Group controlId="userInput">
+            <Form.Label>User Input:</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              placeholder="Enter your input here..."
+            />
+          </Form.Group>
 
-          <div className="anonymous-checkbox">
-            <p>Would you like to submit anonymously?</p>
-            <Checkbox
-              id="anonymous"
+          <Form.Group controlId="anonymous" className="anonymous-checkbox">
+            <Form.Check
+              type="checkbox"
+              label="Yes, submit anonymously"
               checked={anonymous}
               onChange={() => setAnonymous(!anonymous)}
-              label="Yes, submit anonymously"
             />
-          </div>
+          </Form.Group>
 
-          <SubmitButton type="submit" className="submission-button">
+          <Button variant="primary" type="submit" className="submission-button">
             Submit
-          </SubmitButton>
+          </Button>
 
           {submissionMessage && <p>{submissionMessage}</p>}
-        </form>
-      </div>
+        </Form>
+      </Container>
     </div>
   );
 }

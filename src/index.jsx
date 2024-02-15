@@ -10,9 +10,11 @@ const root = createRoot(document.getElementById("root"));
 
 const configuration = {
   auth: {
-    clientId: "0239b525-8be1-49eb-9ed0-e320acbbfd10",
+    clientId: "4e369d06-1ed9-413d-a00d-1c6c746cc8c5",
     authority:
-      "https://login.microsoftonline.com/8634d27a-013f-4953-b957-60fdb603213d",
+      "https://login.microsoftonline.com/8634d27a-013f-4953-b957-60fdb603213d/v2.0",
+    redirectUri: "https://localhost:3000", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
+    postLogoutRedirectUri: "https://localhost:3000", // Indicates the page to navigate after logout.
   },
 };
 

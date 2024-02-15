@@ -1,11 +1,6 @@
 import { createContext, useState } from "react";
-import {
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-  useMsal,
-} from "@azure/msal-react";
-import { InteractionStatus } from "@azure/msal-browser";
-import { loginRequest, b2cPolicies } from "../authConfig";
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "../authConfig";
 
 const AuthContext = createContext();
 const { Provider } = AuthContext;
@@ -52,8 +47,40 @@ const AuthProvider = ({ children }) => {
     instance.logoutRedirect();
   };
 
+  const getAuthToken = async () => {
+    const currentAccount = instance.getActiveAccount();
+    const accessTokenRequest = {
+      scopes: ["User.Read"],
+      account: currentAccount,
+    };
+
+    if (currentAccount) {
+      let accessTokenResponse;
+
+      try {
+        accessTokenResponse = await instance.acquireTokenSilent(
+          accessTokenRequest
+        );
+      } catch (error) {
+        if (error) {
+          // fallback to interaction when silent call fails
+          accessTokenResponse = await instance.acquireTokenRedirect(
+            accessTokenRequest
+          );
+        }
+      }
+
+      return accessTokenResponse
+        ? `Bearer ${accessTokenResponse.accessToken}`
+        : null;
+    }
+    return null;
+  };
+
   return (
-    <Provider value={{ handleLogin, handleLogout, activeAccount }}>
+    <Provider
+      value={{ handleLogin, handleLogout, getAuthToken, activeAccount }}
+    >
       {children}
     </Provider>
   );

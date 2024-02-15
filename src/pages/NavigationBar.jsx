@@ -20,7 +20,7 @@ import {
 import "src/styles/NavigationBar.css"; // Import the CSS file
 
 function NavigationBar() {
-  const { handleLogout, activeAccount } = useContext(AuthContext);
+  const { handleLogout, getAuthToken, activeAccount } = useContext(AuthContext);
 
   return (
     <>
@@ -73,6 +73,16 @@ function NavigationBar() {
         <div className="collapse navbar-collapse justify-content-end">
           <button as="button" onClick={handleLogout}>
             Sign out
+          </button>
+          <button
+            as="button"
+            onClick={() => {
+              getAuthToken().then((token) => {
+                console.log(token);
+              });
+            }}
+          >
+            Token
           </button>
         </div>
       </Navbar>

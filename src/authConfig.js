@@ -30,7 +30,7 @@ export const b2cPolicies = {
         "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile_v2",
     },
   },
-  authorityDomain: "fabrikamb2c.b2clogin.com",
+  authorityDomain: "summitmedia.com",
 };
 
 /**
@@ -40,13 +40,10 @@ export const b2cPolicies = {
  */
 export const msalConfig = {
   auth: {
-    clientId: "0239b525-8be1-49eb-9ed0-e320acbbfd10",
-    authority:
-      "https://login.microsoftonline.com/8634d27a-013f-4953-b957-60fdb603213d",
-    knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
-    redirectUri: "/", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
-    postLogoutRedirectUri: "/", // Indicates the page to navigate after logout.
-    navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.
+    clientId: "4e369d06-1ed9-413d-a00d-1c6c746cc8c5",
+    authority: "https://summitmedia.ciamlogin.com/",
+    redirectUri: "/",
+    postLogoutRedirectUri: "/",
   },
   cache: {
     cacheLocation: "sessionStorage", // Configures cache location. "sessionStorage" is more secure, but "localStorage" gives you SSO between tabs.

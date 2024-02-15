@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import "src/styles/SubmissionForm.css";
 import Logo from "../components/Logo";
-import InputLabel from "../components/form/InputLabel";
-import TextInput from "../components/form/TextInput";
-import Checkbox from "../components/form/Checkbox";
-import SubmitButton from "../components/form/SubmitButton";
+import { Form, Container, Button } from "react-bootstrap";
 
 async function submitFormToServer(formData) {
   try {
@@ -31,7 +28,16 @@ async function submitFormToServer(formData) {
 function SubmissionForm() {
   const [userInput, setUserInput] = useState("");
   const [anonymous, setAnonymous] = useState(false);
+  const [selectedSupportOption, setSelectedSupportOption] = useState("");
   const [submissionMessage, setSubmissionMessage] = useState("");
+
+  const supportOptions = [
+    "Mental Health",
+    "Grievance",
+    "Discipline Queries",
+    "Policy Question",
+    "Other",
+  ]; // Customize options
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +46,7 @@ function SubmissionForm() {
       await submitFormToServer({
         userInput,
         anonymous,
+        selectedSupportOption,
       });
 
       setSubmissionMessage("Form submitted successfully!");
@@ -50,36 +57,55 @@ function SubmissionForm() {
 
   return (
     <div className="submission-form-page">
-      <div classname="content-container">
-        <h1>Form Submission</h1>
+      <Container>
+        <h1 style={{ color: "white" }}>Form Submission</h1>
 
-        <form onSubmit={handleSubmit} className="submission-form">
-          <InputLabel htmlFor="userInput">User Input:</InputLabel>
-          <TextInput
-            id="userInput"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Enter your input here..."
-            textarea // Indicate that this is a textarea
-          />
+        <Form onSubmit={handleSubmit} className="submission-form">
+          <Form.Group controlId="supportOption" className="support-dropdown">
+            <Form.Label>Choose Support Option:</Form.Label>
+            <Form.Control
+              as="select"
+              value={selectedSupportOption}
+              onChange={(e) => setSelectedSupportOption(e.target.value)}
+            >
+              <option value="" disabled>
+                Select an option
+              </option>
+              {supportOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
 
-          <div className="anonymous-checkbox">
-            <p>Would you like to submit anonymously?</p>
-            <Checkbox
-              id="anonymous"
+          <Form.Group controlId="userInput">
+            <Form.Label>User Input:</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              placeholder="Enter your input here..."
+            />
+          </Form.Group>
+
+          <Form.Group controlId="anonymous" className="anonymous-checkbox">
+            <Form.Check
+              type="checkbox"
+              label="Yes, submit anonymously"
               checked={anonymous}
               onChange={() => setAnonymous(!anonymous)}
-              label="Yes, submit anonymously"
             />
-          </div>
+          </Form.Group>
 
-          <SubmitButton type="submit" className="submission-button">
+          <Button variant="primary" type="submit" className="submission-button">
             Submit
-          </SubmitButton>
+          </Button>
 
           {submissionMessage && <p>{submissionMessage}</p>}
-        </form>
-      </div>
+        </Form>
+      </Container>
     </div>
   );
 }

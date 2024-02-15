@@ -1,8 +1,12 @@
 // FormDetails.jsx
 import React from "react";
+import { useParams } from "react-router-dom";
 
-function FormDetails({ form }) {
-  if (!form) {
+function FormDetails({ index }) {
+  let { id } = useParams();
+  let form = { type: "Mental Health", date: "2024-02-15", time: "14:30" };
+  console.log(id);
+  if (!id) {
     return <div>Form not found</div>;
   }
 

@@ -21,7 +21,7 @@ function App() {
               <Route exact path="/" element={<Home />} />
               <Route path="/submission-form" element={<SubmissionForm />} />
               <Route path="/admin-view" element={<Admin />} />
-              <Route path="/form-details/:index" element={<FormDetails />} />
+              <Route path="/form-details/:id" element={<FormDetails />} />
             </Routes>
           </PageLayout>
         </Router>

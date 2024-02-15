@@ -1,13 +1,10 @@
-/* NavigationBar.css */
 nav {
     width: 150px;
-    /* Adjust the width as needed */
     background-color: #333;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    /* Adjust the height as needed */
 }
 
 ul {

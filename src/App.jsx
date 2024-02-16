@@ -8,8 +8,9 @@ import {} from "@azure/msal-react";
 import { AuthProvider } from "./context";
 import { PageLayout, FormDetails } from "./components";
 import { Admin, Home, SubmissionForm, Login } from "./pages";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./styles/App.css";
+//import "./styles/App.css";
 
 function App() {
   return (

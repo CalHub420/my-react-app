@@ -21,11 +21,9 @@ const configuration = {
 const pca = new PublicClientApplication(configuration);
 
 root.render(
-  <React.StrictMode>
-    <MsalProvider instance={pca}>
-      <App />
-    </MsalProvider>
-  </React.StrictMode>
+  <MsalProvider instance={pca}>
+    <App />
+  </MsalProvider>
 );
 
 reportWebVitals();

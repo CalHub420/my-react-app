@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import FormDetails from "../components/FormDetails";
-import "src/styles/Admin.css"; // Import your custom styling
+import { AuthContext } from "../context";
+import { Container } from "react-bootstrap";
+//import "src/styles/Admin.css"; // Import your custom styling
 
 function Admin() {
+  const { getAuthToken } = useContext(AuthContext);
+
+  const [loading, setLoading] = useState(true);
+  const [submissions, setSubmissions] = useState([]);
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+    };
+
+    console.log("useEffect called");
+
+    fetch("https://localhost:7136/submissions", options)
+      .then((response) => response.json())
+      .then((data) => {
+        setSubmissions(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <></>;
+  }
+
   // Dummy data for forms
   const formList = [
     { type: "Mental Health", date: "2024-02-15", time: "14:30" },
@@ -44,12 +69,6 @@ function Admin() {
 
   return (
     <div className="admin">
-      <div className="header">
-        <div className="logo-container">
-          {/* Use the logo from the public folder */}
-          <img className="logo-image" src="/logo0.png" alt="Logo" />
-        </div>
-      </div>
       <div className="content-container">
         <h2 className="banner-header">This is the admin page!</h2>
         <p className="slogan-header">
@@ -57,16 +76,16 @@ function Admin() {
         </p>
 
         <div className="form-container">
-          {sortedFormList.map((form, index) => (
+          {submissions.map((submission) => (
             <Link
-              key={index}
-              to={`/form-details/${index}`}
+              key={submission.id}
+              to={`/form-details/${submission.id}`}
               className="form-link"
             >
               <div className="form-box">
-                <h3>{form.type}</h3>
-                <p>Date: {form.date}</p>
-                <p>Time: {form.time}</p>
+                <h3>{submission.topic}</h3>
+                <p>Date: {submission.creationDate}</p>
+                <p>Time: {submission.creationDate}</p>
               </div>
             </Link>
           ))}

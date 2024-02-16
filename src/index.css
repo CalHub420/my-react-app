@@ -1,9 +1,19 @@
+body, main, #root 
+{
+  min-height: 100vh;
+  width:100%;
+}
+
+.layout-container 
+{
+  background-color: #d8370b;
+}
+
 /* Existing styles in index.css */
 
-.title-container {
+/* .title-container {
   height: 190px;
   background-color: #d9534f;
-  /*NOT BEING APPLIED - TOP BUG FIX! */
   padding: 20px;
   border-radius: 8px;
   color: black;
@@ -32,17 +42,13 @@ form {
   right: 0;
   top: 0;
   padding: 30px;
-  /*Height doesnt need changing */
 }
 
 .logo-image {
-  /* SUMMIT LOGO */
   width: 240px;
-  /* Sizing broken?? */
   height: auto;
 }
 
-/* New styles to integrate */
 
 body {
   margin: 0;
@@ -56,4 +62,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

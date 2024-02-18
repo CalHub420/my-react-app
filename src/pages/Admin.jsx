@@ -25,6 +25,8 @@ function Admin() {
 
   useEffect(() => {
     setLoading(true);
+    setSubmissionCount(0);
+    setSubmissions([]);
 
     getAuthToken()
       .then((apiToken) => {
@@ -79,7 +81,7 @@ function Admin() {
       );
     }
 
-    if (0 >= submissionCount) {
+    if (0 >= submissionCount && 0 >= submissions.length) {
       return (
         <div className="text-center">
           <p className="fs-4">No submissions to display</p>

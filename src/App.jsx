@@ -6,8 +6,14 @@ import {
 } from "@azure/msal-react";
 import {} from "@azure/msal-react";
 import { AuthProvider } from "./context";
-import { PageLayout, FormDetails } from "./components";
-import { Admin, Home, SubmissionForm, Login } from "./pages";
+import { PageLayout } from "./components";
+import {
+  Admin,
+  Home,
+  CreateSubmission,
+  SubmissionDetails,
+  Login,
+} from "./pages";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //import "./styles/App.css";
@@ -20,9 +26,9 @@ function App() {
           <PageLayout>
             <Routes name="app" path="/">
               <Route exact path="/" element={<Home />} />
-              <Route path="/submission-form" element={<SubmissionForm />} />
-              <Route path="/admin-view" element={<Admin />} />
-              <Route path="/form-details/:id" element={<FormDetails />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/create-submission" element={<CreateSubmission />} />
+              <Route path="/submission/:id" element={<SubmissionDetails />} />
             </Routes>
           </PageLayout>
         </Router>

@@ -28,11 +28,11 @@ export const ListSubmissions = async (apiToken, limit, offset, topic) => {
     topic: topic,
   });
 
-  const response = await fetch(
+  const listSubmissionsResponse = await fetch(
     `${process.env.REACT_APP_API_URL}/submissions?${params}`,
     options
   );
-  return await response.json();
+  return await listSubmissionsResponse.json();
 };
 
 export const GetSubmission = async (apiToken, submissionId) => {
@@ -45,10 +45,11 @@ export const GetSubmission = async (apiToken, submissionId) => {
     }),
   };
 
-  return fetch(
+  const getSubmissionResponse = await fetch(
     `${process.env.REACT_APP_API_URL}/submissions/${submissionId}`,
     options
-  ).then((response) => response.json());
+  );
+  return await getSubmissionResponse.json();
 };
 
 export const CreateSubmission = async (apiToken, submission) => {
@@ -64,9 +65,11 @@ export const CreateSubmission = async (apiToken, submission) => {
     body: JSON.stringify(submission),
   };
 
-  return fetch(`${process.env.REACT_APP_API_URL}/submissions`, options).then(
-    (response) => response.json()
+  const createSubmissionResponse = await fetch(
+    `${process.env.REACT_APP_API_URL}/submissions`,
+    options
   );
+  return await createSubmissionResponse.json();
 };
 
 export const CreateResponse = async (apiToken, response) => {
@@ -82,8 +85,8 @@ export const CreateResponse = async (apiToken, response) => {
     body: JSON.stringify(response),
   };
 
-  return fetch(
+  return await fetch(
     `${process.env.REACT_APP_API_URL}/submissions/response`,
     options
-  ).then((response) => response.json());
+  );
 };

@@ -8,6 +8,7 @@ import {
   Spinner,
   ButtonGroup,
   ToggleButton,
+  Stack,
   Badge,
 } from "react-bootstrap";
 import { AuthContext } from "../context";
@@ -97,9 +98,16 @@ function Admin() {
               <Card>
                 <Card.Body>
                   <Card.Title>{submission.subject}</Card.Title>
-                  <Badge bg="secondary">
-                    {submissionTopics[submission.topic]}
-                  </Badge>
+                  <Stack direction="horizontal" gap={2}>
+                    <Badge pill bg="secondary">
+                      {submissionTopics[submission.topic]}
+                    </Badge>
+                    {submission.createdBy ? (
+                      <Badge pill bg="secondary">
+                        Created by: {submission.createdBy}
+                      </Badge>
+                    ) : null}
+                  </Stack>
                   <Card.Text>
                     {submission.message.substring(
                       0,

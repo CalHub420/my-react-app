@@ -56,7 +56,7 @@ function SubmissionForm() {
   };
 
   return (
-    <div className="submission-form-page">
+    <div className="submission-form-page align-middle">
       <Container>
         <h1 style={{ color: "white" }}>Form Submission</h1>
 

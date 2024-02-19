@@ -28,6 +28,7 @@ body {
     /* Adjust the percentage as needed */
     background-color: #d8370d;
     text-align: center;
+    padding-top: 500px;
 }
 
 .submission-form {

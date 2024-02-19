@@ -1,11 +1,11 @@
-body, main, #root 
-{
+body,
+main,
+#root {
   min-height: 100vh;
-  width:100%;
+  width: 100%;
 }
 
-.layout-container 
-{
+.layout-container {
   background-color: #d8370b;
 }
 

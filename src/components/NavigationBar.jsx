@@ -51,9 +51,9 @@ function NavigationBar() {
           <Nav.Item>
             <Nav.Link
               className="text-white"
-              active={location.pathname == "/submission-form"}
+              active={location.pathname == "/create-submission"}
               as={Link}
-              to="/submission-form"
+              to="/create-submission"
             >
               <FontAwesomeIcon
                 icon={faClipboardList}
@@ -65,9 +65,9 @@ function NavigationBar() {
           <Nav.Item>
             <Nav.Link
               className="text-white"
-              active={location.pathname == "/admin-view"}
+              active={location.pathname == "/admin"}
               as={Link}
-              to="/admin-view"
+              to="/admin"
             >
               <FontAwesomeIcon icon={faWrench} className="bi pe-none me-2" />
               Admin

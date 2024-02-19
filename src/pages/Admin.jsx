@@ -1,97 +1,153 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Spinner,
+  ButtonGroup,
+  ToggleButton,
+  Stack,
+  Badge,
+} from "react-bootstrap";
 import { AuthContext } from "../context";
-import { Container } from "react-bootstrap";
-//import "src/styles/Admin.css"; // Import your custom styling
+import { ListSubmissions } from "../utils";
+import { submissionTopics } from "../consts";
 
 function Admin() {
   const { getAuthToken } = useContext(AuthContext);
 
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({ limit: 9, offset: 0, topic: null });
   const [submissions, setSubmissions] = useState([]);
+  const [submissionCount, setSubmissionCount] = useState(0);
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-    };
+    setLoading(true);
+    setSubmissionCount(0);
+    setSubmissions([]);
 
-    console.log("useEffect called");
+    getAuthToken()
+      .then((apiToken) => {
+        ListSubmissions(apiToken, filters.limit, filters.offset, filters.topic)
+          .then((data) => {
+            setSubmissionCount(data.count);
+            setSubmissions(data.items);
+            setLoading(false);
+          })
+          .catch(setError);
+      })
+      .catch(setError);
+  }, [filters]);
 
-    fetch("https://localhost:7136/submissions", options)
-      .then((response) => response.json())
-      .then((data) => {
-        setSubmissions(data);
-        setLoading(false);
-      });
-  }, []);
+  const SubmissionFilter = () => {
+    return (
+      <ButtonGroup className="mb-4">
+        {[1, 2, 3, 4, 5].map((value) => {
+          return (
+            <ToggleButton
+              key={value}
+              id={`topic-filter-${value}`}
+              type="checkbox"
+              variant={filters.topic === value ? "primary" : "outline-primary"}
+              checked={filters.topic === value}
+              value={value}
+              onChange={(e) =>
+                setFilters({
+                  ...filters,
+                  topic: filters.topic === value ? null : value,
+                })
+              }
+            >
+              {submissionTopics[value]}
+            </ToggleButton>
+          );
+        })}
+      </ButtonGroup>
+    );
+  };
 
-  if (loading) {
-    return <></>;
-  }
+  const PageContent = () => {
+    if (loading) {
+      return (
+        <div className="text-center">
+          <Spinner
+            style={{ width: 80, height: 80 }}
+            animation="border"
+            variant="primary"
+          />
+        </div>
+      );
+    }
 
-  // Dummy data for forms
-  const formList = [
-    { type: "Mental Health", date: "2024-02-15", time: "14:30" },
-    { type: "Mental Health", date: "2023-12-25", time: "14:30" },
-    { type: "Mental Health", date: "2023-12-25", time: "13:30" },
-    { type: "Grievance", date: "2024-02-16", time: "10:45" },
-    { type: "Discipline Queries", date: "2024-02-17", time: "13:15" },
-    { type: "Policy Question", date: "2024-02-18", time: "16:00" },
-    { type: "Other", date: "2024-02-19", time: "11:20" },
-  ];
+    if (0 >= submissionCount && 0 >= submissions.length) {
+      return (
+        <div className="text-center">
+          <p className="fs-4">No submissions to display</p>
+        </div>
+      );
+    }
 
-  // Separate Mental Health forms and other forms
-  const mentalHealthForms = formList
-    .filter((form) => form.type === "Mental Health")
-    .sort((a, b) => {
-      const dateComparison = new Date(a.date) - new Date(b.date);
-      if (dateComparison === 0) {
-        return (
-          new Date(`1970-01-01 ${a.time}`) - new Date(`1970-01-01 ${b.time}`)
-        );
-      }
-      return dateComparison;
-    });
-
-  const otherForms = formList
-    .filter((form) => form.type !== "Mental Health")
-    .sort((a, b) => {
-      const dateComparison = new Date(a.date) - new Date(b.date);
-      if (dateComparison === 0) {
-        return (
-          new Date(`1970-01-01 ${a.time}`) - new Date(`1970-01-01 ${b.time}`)
-        );
-      }
-      return dateComparison;
-    });
-
-  const sortedFormList = [...mentalHealthForms, ...otherForms];
+    return (
+      <>
+        <Row xs={2} md={3} className="g-4">
+          {submissions.map((submission) => (
+            <Col key={submission.id}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{submission.subject}</Card.Title>
+                  <Stack direction="horizontal" gap={2}>
+                    <Badge pill bg="secondary">
+                      {submissionTopics[submission.topic]}
+                    </Badge>
+                    {submission.createdBy ? (
+                      <Badge pill bg="secondary">
+                        Created by: {submission.createdBy}
+                      </Badge>
+                    ) : null}
+                  </Stack>
+                  <Card.Text>
+                    {submission.message.substring(
+                      0,
+                      Math.min(100, submission.message.length)
+                    )}
+                  </Card.Text>
+                  <Link
+                    key={submission.id}
+                    to={`/submission/${submission.id}`}
+                    role="button"
+                    className="btn btn-primary btn-sm"
+                  >
+                    View
+                  </Link>
+                </Card.Body>
+                <Card.Footer className="text-muted">
+                  {submission.creationDate}
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </>
+    );
+  };
 
   return (
-    <div className="admin">
-      <div className="content-container">
-        <h2 className="banner-header">This is the admin page!</h2>
-        <p className="slogan-header">
-          Passion, Honesty, Teamwork, Kindness, Learning
+    <Container>
+      <div className="p-4 mb-4 bg-light rounded-3">
+        <h1 className="display-8 fw-bold">Admin</h1>
+        <p className="col-md-8 fs-8 mb-4">
+          View and respond to user submitted questions.
         </p>
-
-        <div className="form-container">
-          {submissions.map((submission) => (
-            <Link
-              key={submission.id}
-              to={`/form-details/${submission.id}`}
-              className="form-link"
-            >
-              <div className="form-box">
-                <h3>{submission.topic}</h3>
-                <p>Date: {submission.creationDate}</p>
-                <p>Time: {submission.creationDate}</p>
-              </div>
-            </Link>
-          ))}
+        <hr />
+        <div className="pt-2">
+          <SubmissionFilter />
+          <PageContent />
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

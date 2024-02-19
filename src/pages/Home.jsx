@@ -1,23 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Row, Container, Col } from "react-bootstrap";
-//import "src/styles/Home.css";
+import { Container } from "react-bootstrap";
 
 function Home() {
   return (
-    <Row>
-      <div className="home">
-        <div className="content-container">
-          <h2 className="banner-header1">Welcome to the Summit Support Hub</h2>
-          <p className="slogan-header">
+    <Container>
+      <div className="p-5 mb-4 bg-light rounded-3">
+        <Container className="py5" fluid>
+          <h1 className="display-5 fw-bold">
+            Welcome to the Summit Support Hub
+          </h1>
+          <p className="col-md-8 fs-4 mb-4">
             Passion, Honesty, Teamwork, Kindness, Learning
           </p>
-          <Link to="/submission-form">
-            <button className="submission-button">Go to Submission Form</button>
+          <Link
+            className="btn btn-primary btn-lg"
+            to="/create-submission"
+            role="button"
+          >
+            Go to Submission Form
           </Link>
-        </div>
+        </Container>
       </div>
-    </Row>
+    </Container>
   );
 }
 

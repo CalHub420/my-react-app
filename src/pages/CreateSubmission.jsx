@@ -25,7 +25,7 @@ async function submitFormToServer(formData) {
   }
 }
 
-function SubmissionForm() {
+function CreateSubmission() {
   const [userInput, setUserInput] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [selectedSupportOption, setSelectedSupportOption] = useState("");
@@ -110,4 +110,4 @@ function SubmissionForm() {
   );
 }
 
-export default SubmissionForm;
+export default CreateSubmission;

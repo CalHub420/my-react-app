@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 
 function Home() {
   return (
-    <Container>
+    <Container className="submission-form-page d-flex align-items-center justify-content-center vh-100">
       <div className="p-5 mb-4 bg-light rounded-3">
         <Container className="py5" fluid>
           <h1 className="display-5 fw-bold">

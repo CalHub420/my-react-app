@@ -56,13 +56,13 @@ function CreateSubmission() {
   };
 
   return (
-    <div className="submission-form-page align-middle">
+    <div className="submission-form-page d-flex align-items-center justify-content-center vh-100">
       <Container>
         <h1 style={{ color: "white" }}>Form Submission</h1>
 
         <Form onSubmit={handleSubmit} className="submission-form">
           <Form.Group controlId="supportOption" className="support-dropdown">
-            <Form.Label>Choose Support Option:</Form.Label>
+            <Form.Label>Choose Your Support Option:</Form.Label>
             <Form.Control
               as="select"
               value={selectedSupportOption}
@@ -79,8 +79,8 @@ function CreateSubmission() {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="userInput">
-            <Form.Label>User Input:</Form.Label>
+          <Form.Group controlId="userInput" className="submission-form my-4">
+            <Form.Label>Share your thoughts or concerns with us:</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -99,7 +99,11 @@ function CreateSubmission() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit" className="submission-button">
+          <Button
+            variant="primary"
+            type="submit"
+            className="submission-button my-4"
+          >
             Submit
           </Button>
 

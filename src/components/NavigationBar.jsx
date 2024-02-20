@@ -83,7 +83,7 @@ function NavigationBar() {
 
         <hr />
 
-        <p className="mb-0">
+        <p className="mb-5">
           <span className="text-white">
             {activeAccount && activeAccount.username
               ? activeAccount.name

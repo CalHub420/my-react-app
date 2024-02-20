@@ -135,7 +135,7 @@ function Admin() {
   };
 
   return (
-    <Container>
+    <Container className="submission-form-page d-flex align-items-center justify-content-center vh-100">
       <div className="p-4 mb-4 bg-light rounded-3">
         <h1 className="display-8 fw-bold">Admin</h1>
         <p className="col-md-8 fs-8 mb-4">
